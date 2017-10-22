@@ -1,0 +1,53 @@
+html{
+    /*background-image: url("{% static 'music/images/bg.jpg' %}");*/
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.w3-input{
+    display:inline-block;
+    width:auto;
+    margin: 8px;
+}
+
+.message{
+    padding: 10px;
+}
+.errorlist{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.errorlist > li:before{
+    content: "*";
+}
+.info-txt{
+    color: #1E90FF;
+}
+.success-txt{
+    color: #00ff00;
+}
+.warning-txt{
+    color: #DAA520;
+}
+.error-txt, .errorlist > li{
+    color: #B22222;
+}
+div.album-card{
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #F0F8FF;
+}
+img.album-cover{
+    float: left;
+    height: 150px;
+    width: 150px;
+    margin: -15px 10px;
+    border: 3px solid #000000;
+}
+div.album-info{
+    float: left;
+}
+div.album-card a:hover > img.album-cover{
+    border: 3px solid #1E90FF;
+}

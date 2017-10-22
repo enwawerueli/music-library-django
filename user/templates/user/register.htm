@@ -1,0 +1,55 @@
+{% extends "base.htm" %}
+
+{% block page_title %}
+	<title>Member Area - Sign Up</title>
+{% endblock %}
+
+{% block content %}
+	<p>You are here. Sign up below:</p>
+	<div id="reg_form" ng-controller="SignUpController">
+		<div class="message w3-card w3-border">
+			<span class="warning-txt">Note: Fields marked with (*) are mandatory</span>
+		</div>
+		<form method="post" action="{% url 'register' %}" name="regForm" novalidate>
+			{% csrf_token %}
+		 	<div>
+		 		<label for="username">Username:*</label>
+		 		<input type="text" name="username" id="username" class="w3-input w3-border" ng-model="user.username" ng-minlength="2" ng-pattern="/^[a-z]*$/i">
+		 		<span class="error-txt w3-block" ng-show="regForm.username.$dirty && regForm.username.$error.minlength">*Username must be atleast 2 characters long.</span>
+		 		<span class="error-txt w3-block" ng-show="regForm.username.$dirty && regForm.username.$error.pattern">*Only alphabets allowed.</span>
+		 		{% if errors.username %}
+		 			<span>{{ errors.username }}</span>
+		 		{% endif %}
+		 	</div>
+		 	<div>
+		 		<label for="email">Email:*</label>
+		 		<input type="email" name="email" id="email" class="w3-input w3-border" ng-model="user.email" ng-pattern="/^[\w\-\.]+?\@[\w\-]+\.[\w\-]+$/i">
+		 		<span class="error-txt w3-block" ng-show="regForm.email.$dirty && regForm.email.$error.pattern">*Enter a valid email adress.</span>
+		 		{% if errors.email %}
+		 			<span>{{ errors.email }}</span>
+		 		{% endif %}
+		 	</div>
+		 	<div>
+		 		<label for="password1">Password:*</label>
+		 		<input type="password" name="password1" id="password1" class="w3-input w3-border" ng-minlength="8" ng-model="user.password1" ng-pattern="/^\w*?(?=\D*\d)(?=[^a-z]*[a-z])\w*?$/i">
+		 		<span class="error-txt w3-block" ng-show="regForm.password1.$dirty && regForm.password1.$error.minlength">*Password must be atleast 8 characters long.</span>
+		 		<span class="error-txt w3-block" ng-show="regForm.password1.$dirty && regForm.password1.$error.pattern">*Password must combine both letters and digits.</span>
+		 		{% if errors.password1 %}
+		 			<span>{{ errors.password1 }}</span>
+		 		{% endif %}
+		 	</div>
+		 	<div>
+		 		<label for="password2">Confirm Password:*</label>
+		 		<input type="password" name="password2" id="password2" class="w3-input w3-border" ng-model="user.password2" ng-pattern="[[ user.password1 ]]">
+		 		<span class="error-txt w3-block" ng-show="regForm.password2.$dirty && regForm.password2.$error.pattern">*Password do not match.</span>
+		 		{% if errors.password2 %}
+		 			<span>{{ errors.password2 }}</span>
+		 		{% endif %}
+		 	</div>
+		 	<div>
+		 		<button type="submit" class="w3-button w3-border w3-blue">REGISTER</button>
+		 	</div>
+		</form>
+	</div>
+	<p>Already have an account? <a href="{% url 'login' %}">Login here&nbsp;&raquo;</a></p>
+{% endblock %}

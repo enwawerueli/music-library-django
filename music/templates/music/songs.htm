@@ -1,0 +1,36 @@
+{% extends "base.htm" %}
+
+{% block content %}
+	<h3>My songs</h3>
+	{% if songs %}
+		<table class="w3-table-all">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Artist</th>
+					<th>Album</th>
+					<th>Genre</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for song in songs %}		
+				<tr>
+					<td>{{ song.title }}</td>
+					<td>{{ song.album.artist.name }}</td>
+					<td><a href="{% url 'album_detail' song.album.id %}">{{ song.album.title }}</a></td>
+					<td>{{ song.album.genre }}</td>
+					<td>
+						<a href="{% url 'delete_song' song.album.id song.id %}">
+						<span class="fa fa-trash-o fa-lg"></span></a>
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<div class="message w3-card w3-border">
+			<span class="info-txt">You have not added any songs yet. <a href="{% url 'albums' %}">Create</a> an album and start adding songs.</span>
+		</div>
+	{% endif %}
+{% endblock %}

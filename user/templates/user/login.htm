@@ -1,0 +1,40 @@
+{% extends "base.htm" %}
+
+{% block page_title %}
+	<title>Member Area - Login</title>
+{% endblock %}
+
+{% block main %}
+	<div id="login-form" class="panel panel-default">
+		<div class="panel-heading">
+			<h5><strong>Welcome! Please login:</strong></h5>
+		</div>
+		<div class="panel-body">
+			<form method="post" action="{% url 'login' %}" class="form">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="username" class="control-label">Your Username:</label>
+					<div>
+						<input type="text" name="username" value="{{ data.username }}" id="username" class="form-control">
+						{% if errors.username %}
+							{{ errors.username }}
+						{% endif %}
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="control-label">Your Password:</label>
+					<div>
+						<input type="password" name="password" id="password" class="form-control">
+						{% if errors.password %}
+							{{ errors.password }}
+						{% endif %}
+					</div>
+				</div>
+				<div>
+					<button type="submit" class="btn btn-success btn-sm">LOGIN</button>
+				</div>
+			</form>
+			<p>Don't have an account? <a href="{% url 'register' %}">Sign up here&nbsp;&raquo;</a></p>
+		</div>
+	</div>
+{% endblock %}

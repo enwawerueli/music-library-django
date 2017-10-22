@@ -1,0 +1,29 @@
+{% extends 'music/library.htm' %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h4>My Albums</h4>
+            <hr>
+            <div class="row">
+                {% for album in albums  %}
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="{% url 'album_details' album.id %}" class="thumbnail">
+                            {% if album.cover %}
+                                <img src="{{ album.cover.url }}" class="album-cover">
+                            {% else %}
+                                <img src="{{ MEDIA_URL }}cover/default.jpg" class="album-cover">
+                            {% endif %}
+                            <div class="caption">
+                                <p>{{ album.title | capfirst }}</p>
+                                <p>{{ album.artist.name | capfirst }}</p>
+                                <p>{{ album.year | capfirst }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <a href="{% url 'add_album' %}" class="btn btn-default btn-sm">Create Album</a>
+        </div>
+    </div>
+{% endblock %}

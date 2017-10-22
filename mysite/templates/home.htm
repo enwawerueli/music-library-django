@@ -1,0 +1,15 @@
+{% extends "base.htm" %}
+
+{% block page_title %}
+	<title>Air Music - Home</title>
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    	<p>Hi {{ user.username }},<br>Welcome to your dashboard. {{ yee }}</p>
+    {% else %}
+        <p>Welcome to our homepage</p>
+        <p><a href="{% url 'login' %}">Login here&nbsp;&raquo;</a></p>
+        <p><a href="{% url 'register' %}">Sign up here&nbsp;&raquo;</a></p>
+    {% endif %}
+{% endblock %}

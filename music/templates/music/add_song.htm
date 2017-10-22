@@ -1,0 +1,12 @@
+<div ng-show="AddSongForm" class="add-song">
+    <form method="post" action="{% url 'add_song' album.id %}">
+        {% csrf_token %}
+        <div>
+            <label for="song-title" class="w3-text-blue">Song title:</label>
+            <input type="text" name="title" id="song-title" class="w3-input w3-border" ng-model="song.title">
+        </div>
+        <div>
+            <button type="submit" class="w3-button w3-blue">SUBMIT</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,61 @@
+{% extends 'base.htm' %}
+
+{% block page_title %}
+    <title>Synthetica</title>
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 cc-col1">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="">
+                        <h1>Synthetica</h1>
+                        <h4><strong>An elixir for existence</strong></h4>
+                    </a>
+                </div>
+            </div>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="#playlists" data-toggle="collapse" data-parent="#accordion">
+                            <h5 class="panel-title">Playlists</h5>
+                        </a>
+                    </div>
+                    <div id="playlists" class="panel-collapse collapse">
+                        <ul class="list-group">
+                            <li class="list-group-item"><a href=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="#music" data-toggle="collapse" data-parent="#accordion">
+                            <h5 class="panel-title">Music</h5>
+                        </a>
+                    </div>
+                   <div id="music" class="panel-collapse collapse in">
+                       <div class="list-group">
+                           <a href="{% url 'albums' %}" class="list-group-item">Albums</a>
+                           <a href="{% url 'artists' %}" class="list-group-item">Artists</a>
+                           <a href="{% url 'genres' %}" class="list-group-item">Genre</a>
+                           <a href="{% url 'favourites' %}" class="list-group-item">Favourites</a>
+                       </div>
+                   </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a href="#videos" data-toggle="collapse" data-parent="#accordion">
+                            <h5 class="panel-title">Videos</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-8 cc-col2">
+            {% block content %}
+            {% endblock  %}
+        </div>
+    </div>
+{% endblock %}

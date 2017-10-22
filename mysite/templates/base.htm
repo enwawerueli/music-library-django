@@ -1,0 +1,71 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> {% block page_title %} {% endblock %}
+    <link href="{% static 'music/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'music/vendor/plyr/dist/plyr.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'music/css/theme.css' %}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="" class="navbar-brand">Synthetica</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                            </span>
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class=""><a href="index.html">Dashboard</a></li>
+                        <li><a href="{% url 'albums' %}">Library</a></li>
+                        <li><a href="">Circles</a></li>
+                        <li><a href="">Profile</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">User<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container" style="padding-top: 70px;">
+        {% block main %} {% endblock %}
+    </div>
+    <footer class="navbar-fixed-bottom text-center">
+        <p>Copyright © 2017 <a href="#">Synthetica</a> | Design by: enwaweru.eli</p>
+    </footer>
+    <script type="text/javascript" src="{% static 'music/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'music/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'music/vendor/plyr/dist/plyr.js' %}"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var players = plyr.setup();
+    });
+    </script>
+</body>
+
+</html>
